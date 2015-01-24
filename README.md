@@ -27,4 +27,9 @@ Il peut être nécessaire de cocher la case "Copy files on project open" dans le
 Tests :
 Les tests peuvent être effectués avec 2 comptes: admin (mot de passe: admin) et test (mot de passe: test).
 
+TESTS JSON 
+
+Une fois connecté avec un des deux comptes (admin/admin ou test/test), vous pourrez tester l'utilisation de json en cliquant dans le menu sur toJson (ceci affiche le code json). Ensuite vous pouvez aller voir l'affichage générer a partir du code json en allant dans le menu et affichageJson.
+
+
 # lebrechzend 
