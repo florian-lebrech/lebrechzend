@@ -3,6 +3,8 @@ Florian Le Brech
 
 
 Tuto installation du projet ZEND
+N'oubliez pas de créer la base de donnée grâce au fichier boulandlebrech.sql dans data/cache/boulandlebrech.sql 
+
 
 Fichier local.php:
 Par défaut ce fichier est exclu par git. Pour faire fonctionner la base de données, vous devez ajouter:
@@ -30,6 +32,7 @@ Les tests peuvent être effectués avec 2 comptes: admin (mot de passe: admin) e
 TESTS JSON 
 
 Une fois connecté avec un des deux comptes (admin/admin ou test/test), vous pourrez tester l'utilisation de json en cliquant dans le menu sur toJson (ceci affiche le code json). Ensuite vous pouvez aller voir l'affichage générer a partir du code json en allant dans le menu et affichageJson.
+
 
 
 # lebrechzend 
