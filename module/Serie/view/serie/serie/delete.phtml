@@ -1,0 +1,27 @@
+<link  rel="stylesheet" href="<?php echo $this->basePath('css/style.css') ?>">
+        </link>
+
+<?php
+ // module/Serie/view/serie/serie/delete.phtml:
+echo '<br />';
+ $title = 'Supprimer une serie';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <p>Êtes vous sûr de vouloir supprimer 
+     '<?php echo $this->escapeHtml($serie->nomSerie); ?>' ?
+ </p>
+ <?php
+ $url = $this->url('serie', array(
+     'action' => 'delete',
+     'idSerie'     => $this->idSerie,
+ ));
+ ?>
+ <form action="<?php echo $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="idSerie" value="<?php echo (int) $serie->idSerie; ?>" />
+     <input type="submit" name="del" value="Yes" />
+     <input type="submit" name="del" value="No" />
+ </div>
+ </form>

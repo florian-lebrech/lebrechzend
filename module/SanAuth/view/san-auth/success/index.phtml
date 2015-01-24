@@ -1,0 +1,7 @@
+<?php header( "refresh:4;url=serie" ); ?>
+
+Identification reussie, bienvenue <?php echo $_SESSION['zf_tutorial']['storage'] ?> ! <br/> Redirection dans 5..4..3..2..1..
+
+<br />
+
+<a href = "<?php echo $this->url('login/process', array('action' => 'logout')); ?>">Logout</a>

@@ -1,0 +1,83 @@
+<?php
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ body {
+    padding: 10px !important;   
+}
+    table{
+     margin-top: 75px;
+        
+    }   
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  
+}
+table tr:nth-child(odd)	{
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+ <script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
+    <script data-require="ng-table@*" data-semver="0.3.0" src="http://bazalt-cms.com/assets/ng-table/0.3.0/ng-table.js"></script>
+    
+    <link data-require="ng-table@*" data-semver="0.3.0" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.0/ng-table.css" />
+    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  
+    <script> 
+        
+    var app = angular.module('main', ['ngTable']).
+		controller('DemoCtrl', function($scope, $http, ngTableParams) {
+  
+    $http.get("http://localhost/bouland/public/serie/genererJson")
+    .success(function(data, status, headers, config){
+        $scope.data = data;    
+		$scope.tableParams = new ngTableParams({
+			page: 1,            // show first page
+			count: 10           // count per page
+		}, {
+			total: data.length, // length of data
+			getData: function($defer, params) {
+				$defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+			}
+		});
+    })
+    .error(function(data, status, headers, config) {
+        console.log("Les Cactus vaincront.");
+    });
+});
+</script> 
+   
+</head>
+
+<body ng-app="main">
+
+<div  ng-controller="DemoCtrl"> 
+
+    <p><strong>Page:</strong> {{tableParams.page()}}</p>
+        <p><strong>Count per page:</strong> {{tableParams.count()}}</p>
+        
+ <table ng-table="tableParams" class="table">    
+     <tr ng-repeat="x in $data ">
+   
+       <td data-title="'Image'">  <?php echo "<img src=\""; ?>  {{ x.imageSerie }}  <?php echo "\" style=\"width:150px;height:128px\" >";  ?>    </td>
+       <td data-title="'Nom Serie'">{{ x.nomSerie }}</td>
+       <td data-title="'Description'"> {{ x.descriptionSerie }}  </td>
+       <td data-title="'Episode'"> {{ x.episode }}</td>
+       <td data-title="'Saison'"> {{ x.saison }}</td>
+    
+  </tr>
+</table>
+        
+
+</div>  
+
+</body>
+</html>

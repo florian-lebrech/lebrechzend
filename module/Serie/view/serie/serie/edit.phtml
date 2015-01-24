@@ -1,0 +1,34 @@
+
+<link  rel="stylesheet" href="<?php echo $this->basePath('css/style.css') ?>">
+        </link>
+
+<?php
+
+ // module/Serie/view/serie/serie/edit.phtml:
+ echo '<br />';
+ $title = 'Edition de serie';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <?php
+ 
+ $form = $this->form;
+ $form->setAttribute('action', $this->url('serie', array('action' => 'edit','idSerie'=> $this->idSerie,)));
+ $form->prepare();
+
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('idSerie'));
+ echo $this->formHidden($form->get('username'));
+ echo $this->formRow($form->get('nomSerie'));
+   echo '<br />';
+ echo $this->formRow($form->get('imageSerie'));
+   echo '<br />';
+ echo $this->formRow($form->get('descriptionSerie'));
+   echo '<br />';
+ echo $this->formRow($form->get('saison'));
+   echo '<br />';
+ echo $this->formRow($form->get('episode'));
+   echo '<br />';
+ echo $this->formSubmit($form->get('submit'));
+ echo $this->form()->closeTag();
